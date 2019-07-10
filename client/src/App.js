@@ -37,3 +37,8 @@ componentDidMount(){
 
 }
 export default App;
+
+// TODO:
+// Add icons
+// Improve feel
+// Include modal information
