@@ -19,7 +19,7 @@ componentDidMount(){
     return (  
       <Router>
       <div className= "container">
-      <h1>Welcome to the Employee Search</h1>
+      <h1>Welcome to Shipment Search</h1>
       <Route
           exact path="/"
           render= { () =>
