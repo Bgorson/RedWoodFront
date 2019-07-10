@@ -19,6 +19,9 @@ handleInputChange = (event) => {
 
 handleSubmit(event){
     let query= this.state.query
+    if (query===''){
+        query=' ';
+    }
     query= query.toLowerCase()
     query= query.charAt(0).toUpperCase()+query.slice(1)
     event.preventDefault()
@@ -50,12 +53,10 @@ render() {
             else {
                 
                 results= <div>
+                    <p className="shipment_success">Shipment Located</p>
                 {
                 this.state.data.map((employee) =>
-               <ul>
-                 <a href= {"detail/" + employee._id}> Click for details</a>
-                 <li id = {employee._id}>Name: {employee.First_Name} {employee.Last_Name}</li>
-                </ul> 
+                <a className="shipment_success" href= {"detail/" + employee._id} id = {employee._id}>Name: {employee.First_Name} {employee.Last_Name}</a>
                     )
                     }
             </div>
@@ -81,7 +82,7 @@ render() {
             <form onSubmit={this.handleSubmit}>
                 <input type="text" id="filter" placeholder="Search for..."  onChange={this.handleInputChange}/>
             </form>
-            <button onClick={this.handleSubmit}>Search</button>
+            <button className="btn btn-success" onClick={this.handleSubmit}>Search</button>
             <div>
                 {results}
             </div>

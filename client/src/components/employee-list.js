@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import axios from 'axios'
-
+import "bootstrap/dist/css/bootstrap.min.css"
 export default class TodosList extends Component {
     constructor(){
         super()
@@ -26,20 +26,18 @@ export default class TodosList extends Component {
     render(){
         let allEmployees;
         if (this.state.viewAll){
-            allEmployees=<div>
+            allEmployees=< div id= "full_list">
                 { this.state.Employees.map(resident=> 
-                <ul>
-                <a href= {"detail/" + resident._id}> Click for details</a>
-                <li id = {resident._id}>Name: {resident.First_Name} {resident.Last_Name}</li>
-                <li>Country: </li>
+                <ul class= "individual_item">
+                {/* <a href= {"detail/" + resident._id}> Click for details</a> */}
+                <a href= {"detail/" + resident._id} id = {resident._id}>Name: {resident.First_Name} {resident.Last_Name}</a>
                 </ul>
                 )}
             </div>
         }
         return (
             <div>
-                <p>Welcome to your Employees</p>
-                <button onClick= {this.handleViewAll}>Click here to view everyone</button>
+                <button className="view_shippers btn btn-primary" onClick= {this.handleViewAll}>Click here to view all shippers.</button>
                 {allEmployees}
                
             </div>

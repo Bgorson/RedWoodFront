@@ -4,7 +4,7 @@ import "bootstrap/dist/css/bootstrap.min.css"
 import Detail_View from './components/detail_View';
 import EmployeeList from "./components/employee-list"
 import Search from "./components/search-bar"
-
+import "./App.css"
 class App extends Component {
   constructor(props) {
     super(props);
@@ -19,7 +19,7 @@ componentDidMount(){
     return (  
       <Router>
       <div className= "container">
-      <h1>Welcome to Shipment Search</h1>
+      <h1 className= 'jumbotron'>Welcome to Shipment Search</h1>
       <Route
           exact path="/"
           render= { () =>

@@ -3,13 +3,16 @@ import axios from 'axios'
 import "../index.css"
 import SimpleMap from "./SimpleMap"
 import { Redirect } from 'react-router-dom'
+import Modal from './Modal/modal'
+import '../components/Modal/modal.css'
 
 class Detail_View extends Component {
     constructor(props) {
         super(props);
         this.state = { 
             name:'',
-            redirectTo: false
+            redirectTo: false,
+            show:false
         }
     this.handleReturn= this.handleReturn.bind(this);
     }
@@ -18,6 +21,12 @@ class Detail_View extends Component {
         this.setState({
             redirectTo: '/',
         })
+    }
+    showModal =() => {
+        this.setState({ show:true})
+    }
+    hideModal =()=> {
+        this.setState({show:false})
     }
     componentDidMount(){
         console.log("Detail page")
@@ -49,9 +58,10 @@ class Detail_View extends Component {
         return ( 
             <div>
         <h1>You're looking at a detailed view of {this.state.First_Name} {this.state.Last_Name} of {this.state.Organization}'s shipment</h1> 
-        <div>
+        <div id= "basic_info">
             <p>{this.state.First_Name}'s shipment is currently leaving {this.state.Current_City} and will be arriving in {this.state.Current_Country}.</p>
         </div>
+        <div id= "map">
         <SimpleMap
         lat= {this.state.Latitude}
         lng= {this.state.Longitude}
@@ -60,7 +70,12 @@ class Detail_View extends Component {
             lng:(this.state.Longitude)
          }}
         />
-    <button onClick={this.handleReturn}>Return to Employee List</button>
+        </div>
+        <Modal show={this.state.show} handleClose={this.hideModal}>
+            <p>Detailed info located here</p>
+        </Modal>
+        <button className= "btn btn-info" onClick= {this.showModal}>Show detailed view of shipper</button>
+    <button className="btn btn-warning"onClick={this.handleReturn}>Return to Employee List</button>
 </div>
         );
     }
