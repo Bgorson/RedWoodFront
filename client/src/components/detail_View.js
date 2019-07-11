@@ -81,7 +81,10 @@ class Detail_View extends Component {
     </div>
     </div>
     <Modal show={this.state.show} handleClose={this.hideModal}>
-            <p>Detailed info located here</p>
+            <p>Shipper's Name: {this.state.First_Name} {this.state.Last_Name}</p>
+            <p>Shipper's Organization: {this.state.Organization}</p>
+            <p>Shipper's Age: {this.state.Current_Age} </p>
+            <p>Shipper's Current Salary: {this.state.Current_Salary}</p>
         </Modal>
 </div>
         );
