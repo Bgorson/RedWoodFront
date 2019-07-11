@@ -73,3 +73,17 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#1e5799', end
   color:#fff;
 
 }
+#rendered_map{
+  height:50vh;
+  width:25%;
+}
+
+@media only screen and (max-width: 600px) {
+  #rendered_map{
+    height:50vh;
+    width:70%;
+  }
+  .detailText{
+    font-size: 1rem
+  }
+}

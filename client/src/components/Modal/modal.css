@@ -26,3 +26,9 @@
   .display-none {
     display: none;
   }
+
+  @media only screen and (max-width: 600px) {
+    .modal-main{
+      width:80%;
+    }
+  }
