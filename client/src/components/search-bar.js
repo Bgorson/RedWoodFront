@@ -23,7 +23,7 @@ handleInputChange = (event) => {
 handleSubmit(event){
     let query= this.state.query
     if (query===''){
-        query=' ';
+        query='a';
     }
     query= query.toLowerCase()
     query= query.charAt(0).toUpperCase()+query.slice(1)
@@ -49,7 +49,7 @@ render() {
     else {
         try {
             console.log("trying")
-            if (this.state.query && this.state.data.length<=0){
+            if (this.state.data.length<=0){
                 console.log("error")
                 results= <div>
                     <p>We were unable to locate that shipper. Please try again or select a shipper through view-all </p>
