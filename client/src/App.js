@@ -19,7 +19,9 @@ componentDidMount(){
     return (  
       <Router>
       <div className= "container">
-      <h1 className= 'jumbotron'>Welcome to Shipment Search</h1>
+      <div className= 'jumbotron'>
+      <h1 className="hd1">Welcome to Shipment Search</h1>
+      </div>
       <Route
           exact path="/"
           render= { () =>
@@ -42,3 +44,4 @@ export default App;
 // Add icons
 // Improve feel
 // Include modal information
+//fix error of putting in empty search

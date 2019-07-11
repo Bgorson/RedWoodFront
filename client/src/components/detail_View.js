@@ -5,6 +5,8 @@ import SimpleMap from "./SimpleMap"
 import { Redirect } from 'react-router-dom'
 import Modal from './Modal/modal'
 import '../components/Modal/modal.css'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faAddressCard, faAngleDoubleLeft } from '@fortawesome/free-solid-svg-icons'
 
 class Detail_View extends Component {
     constructor(props) {
@@ -52,17 +54,20 @@ class Detail_View extends Component {
     }
     
     render() { 
+        const details= <FontAwesomeIcon icon= {faAddressCard}/>
+        const reverse= <FontAwesomeIcon icon= {faAngleDoubleLeft}/>
         if (this.state.redirectTo) {
             return <Redirect to={{ pathname: this.state.redirectTo }} />
         } else {
         return ( 
             <div>
-        <h1>You're looking at a detailed view of {this.state.First_Name} {this.state.Last_Name} of {this.state.Organization}'s shipment</h1> 
+        <h1 className= "detailText">You're looking at a detailed view of {this.state.First_Name} {this.state.Last_Name} of {this.state.Organization}'s shipment</h1> 
         <div id= "basic_info">
             <p>{this.state.First_Name}'s shipment is currently leaving {this.state.Current_City} and will be arriving in {this.state.Current_Country}.</p>
         </div>
-        <div id= "map">
+        <div className= "mapContainer">
         <SimpleMap
+        className= "map"
         lat= {this.state.Latitude}
         lng= {this.state.Longitude}
         currentCenter= {{
@@ -70,12 +75,14 @@ class Detail_View extends Component {
             lng:(this.state.Longitude)
          }}
         />
-        </div>
-        <Modal show={this.state.show} handleClose={this.hideModal}>
+    <div className="buttons">
+    <button className= "btn btn-info" onClick= {this.showModal}>{details}Show detailed view of shipper</button>
+    <button className="btn btn-warning"onClick={this.handleReturn}>{reverse}Return to Employee List</button>
+    </div>
+    </div>
+    <Modal show={this.state.show} handleClose={this.hideModal}>
             <p>Detailed info located here</p>
         </Modal>
-        <button className= "btn btn-info" onClick= {this.showModal}>Show detailed view of shipper</button>
-    <button className="btn btn-warning"onClick={this.handleReturn}>Return to Employee List</button>
 </div>
         );
     }

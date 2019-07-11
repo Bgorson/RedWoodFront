@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faSearch } from '@fortawesome/free-solid-svg-icons'
 
 class BodyData extends Component {
 constructor(props){
@@ -8,6 +10,7 @@ super(props)
     query: '',
     data: 'empty',
 }
+
 this.handleSubmit = this.handleSubmit.bind(this);
 }
 
@@ -35,6 +38,8 @@ handleSubmit(event){
 }
     
 render() {
+    const search= <FontAwesomeIcon icon= {faSearch}/>
+
     let results;
     if(this.state.data==='empty'){
         results= <div>
@@ -82,7 +87,7 @@ render() {
             <form onSubmit={this.handleSubmit}>
                 <input type="text" id="filter" placeholder="Search for..."  onChange={this.handleInputChange}/>
             </form>
-            <button className="btn btn-success" onClick={this.handleSubmit}>Search</button>
+            <button className="btn btn-success" onClick={this.handleSubmit}>{search}Search</button>
             <div>
                 {results}
             </div>

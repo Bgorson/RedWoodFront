@@ -1,6 +1,9 @@
 import React, {Component} from 'react';
 import axios from 'axios'
 import "bootstrap/dist/css/bootstrap.min.css"
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faClipboardList } from '@fortawesome/free-solid-svg-icons'
+
 export default class TodosList extends Component {
     constructor(){
         super()
@@ -24,6 +27,7 @@ export default class TodosList extends Component {
     })
     }
     render(){
+        const clipboard= <FontAwesomeIcon icon= {faClipboardList}/>
         let allEmployees;
         if (this.state.viewAll){
             allEmployees=< div id= "full_list">
@@ -37,7 +41,7 @@ export default class TodosList extends Component {
         }
         return (
             <div>
-                <button className="view_shippers btn btn-primary" onClick= {this.handleViewAll}>Click here to view all shippers.</button>
+                <button className="view_shippers btn btn-primary" onClick= {this.handleViewAll}>{clipboard}Click here to view all shippers.</button>
                 {allEmployees}
                
             </div>
